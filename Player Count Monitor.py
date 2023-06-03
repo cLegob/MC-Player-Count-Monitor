@@ -8,8 +8,8 @@ server_port = 25565  # server port
 
 y_axis_limit = 30  # how many y values there are (max player count)
 y_tick_increment = 1  # how much the y value increases by
-timeToSleep = 1  # how many seconds to wait between each update
-x_axis_limit = 5  # how many x values there can be (times updated)
+timeToSleep = 3600  # how many seconds to wait between each update
+x_axis_limit = 24  # how many x values there can be (times updated)
 SaveToFile = False  # Set this flag to True if you want to save a picture of the graph
 
 timestamps = []
