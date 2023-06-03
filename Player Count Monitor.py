@@ -58,7 +58,6 @@ while True:
         if SaveToFIle:
             if entries > x_axis_limit:
                 entries = 0
-                print("Saving")
                 save_graph()
 
         timestamps.pop(0)
