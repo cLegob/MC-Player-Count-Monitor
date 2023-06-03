@@ -8,12 +8,13 @@ server_port = 25565  # server port
 
 y_axis_limit = 30  # how many y values there are (max player count)
 y_tick_increment = 1  # how much the y value increases by
-timeToSleep = 3600  # how many seconds to wait between each update
-x_axis_limit = 24  # how many x values there can be (times updated)
-resetSaveToFile = False  # Set this flag to True if you want to save a picture of the graph
+timeToSleep = 1  # how many seconds to wait between each update
+x_axis_limit = 5  # how many x values there can be (times updated)
+SaveToFile = False  # Set this flag to True if you want to save a picture of the graph
 
 timestamps = []
 player_counts = []
+entries = 0
 
 def get_player_count():
     server = JavaServer.lookup(f"{server_ip}:{server_port}")
@@ -22,6 +23,8 @@ def get_player_count():
     return player_count
 
 def update_graph():
+    global entries
+    
     time_strings = [timestamp.strftime("%H:%M:%S") for timestamp in timestamps]
 
     plt.clf()
@@ -31,6 +34,7 @@ def update_graph():
     plt.ylabel("Player Count")
     plt.title("Minecraft Server Player Count")
     plt.xticks(rotation=30)
+    entries += 1
 
     plt.ylim(0, y_axis_limit)
 
@@ -51,15 +55,14 @@ while True:
     player_counts.append(player_count)
 
     if len(timestamps) > x_axis_limit:
-        if resetSaveToFile:
-            save_graph()
-            timestamps = []
-            player_counts = []
-            update_graph()
-            continue
+        if SaveToFIle:
+            if entries > x_axis_limit:
+                entries = 0
+                print("Saving")
+                save_graph()
 
         timestamps.pop(0)
         player_counts.pop(0)
 
     update_graph()
-    plt.pause(timeToSleep)
+    time.sleep(timeToSleep)
