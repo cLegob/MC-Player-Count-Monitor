@@ -25,7 +25,7 @@ def get_player_count():
 def update_graph():
     global entries
     
-    time_strings = [timestamp.strftime("%H:%M:%S") for timestamp in timestamps]
+    time_strings = [timestamp.strftime("%H:%M") for timestamp in timestamps]
 
     plt.clf()
 
