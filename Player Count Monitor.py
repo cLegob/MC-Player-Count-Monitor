@@ -55,7 +55,7 @@ while True:
     player_counts.append(player_count)
 
     if len(timestamps) > x_axis_limit:
-        if SaveToFIle:
+        if SaveToFile:
             if entries > x_axis_limit:
                 entries = 0
                 save_graph()
