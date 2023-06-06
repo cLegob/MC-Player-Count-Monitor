@@ -33,7 +33,7 @@ def update_graph():
     plt.xlabel("Time")
     plt.ylabel("Player Count")
     plt.title("Minecraft Server Player Count")
-    plt.xticks(rotation=30)
+    plt.xticks(rotation=45)
     entries += 1
 
     plt.ylim(0, y_axis_limit)
